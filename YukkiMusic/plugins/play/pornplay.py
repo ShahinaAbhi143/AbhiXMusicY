@@ -6,7 +6,7 @@ import pytgcalls
 import os, yt_dlp 
 from pyrogram.types import CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton, Message
 from pytgcalls.types import AudioVideoPiped
-from .plugins.play import play
+from YukkiMusic.plugins.play import play
 from YukkiMusic.plugins.play.pornplay import play
 
 #
