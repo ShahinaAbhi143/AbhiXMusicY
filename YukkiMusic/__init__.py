@@ -35,7 +35,14 @@ app = YukkiBot()
 # Assistant Client
 userbot = Userbot()
 
-from .platforms import PlaTForms
+from .platforms import *
 
-Platform = PlaTForms()
+YouTube = YouTubeAPI()
+Carbon = CarbonAPI()
+Spotify = SpotifyAPI()
+Saavn = SaavnAPI()
+Apple = AppleAPI()
+Resso = RessoAPI()
+SoundCloud = SoundAPI()
+Telegram = TeleAPI()
 HELPABLE = {}
