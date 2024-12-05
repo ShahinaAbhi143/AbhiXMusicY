@@ -9,7 +9,7 @@
 #
 import math
 
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from pyrogram.types import InlineKeyboardButton
 
 from YukkiMusic.utils.formatters import time_to_seconds
 
@@ -262,6 +262,11 @@ def panel_markup_1(_, videoid, chat_id):
         [
             InlineKeyboardButton(text="⏯ Skip", callback_data=f"ADMIN Skip|{chat_id}"),
             InlineKeyboardButton(text="⏹ Stop", callback_data=f"ADMIN Stop|{chat_id}"),
+        ],
+        [
+            InlineKeyboardButton(
+                text="🔁 Replay ", callback_data=f"ADMIN Replay|{chat_id}"
+            ),
         ],
         [
             InlineKeyboardButton(
