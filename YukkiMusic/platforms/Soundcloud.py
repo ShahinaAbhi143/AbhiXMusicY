@@ -2,7 +2,7 @@
 # Copyright (C) 2024 by TheTeamVivek@Github, < https://github.com/TheTeamVivek >.
 #
 # This file is part of < https://github.com/TheTeamVivek/YukkiMusic > project,
-# and is released under the "GNU v3.0 License Agreement".
+# and is released under the MIT License.
 # Please see < https://github.com/TheTeamVivek/YukkiMusic/blob/master/LICENSE >
 #
 # All rights reserved.
@@ -13,9 +13,10 @@ from os import path
 from yt_dlp import YoutubeDL
 
 from YukkiMusic.utils.formatters import seconds_to_min
+from YukkiMusic.utils.decorators import asyncify
 
 
-class SoundAPI:
+class SoundCloud:
     def __init__(self):
         self.opts = {
             "outtmpl": "downloads/%(id)s.%(ext)s",
@@ -25,17 +26,15 @@ class SoundAPI:
             "continuedl": True,
         }
 
-    async def valid(self, link: str):
-        if "soundcloud" in link:
-            return True
-        else:
-            return False
+    async def valid(self, link: str) -> bool:
+        return "soundcloud" in link
 
-    async def download(self, url):
+    @asyncify
+    def download(self, url: str) -> dict | bool:
         d = YoutubeDL(self.opts)
         try:
             info = d.extract_info(url)
-        except:
+        except Exception:
             return False
         xyz = path.join("downloads", f"{info['id']}.{info['ext']}")
         duration_min = seconds_to_min(info["duration"])
